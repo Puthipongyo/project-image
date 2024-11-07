@@ -1,0 +1,16 @@
+/* style.css */
+
+.center-header {
+    text-align: center;
+}
+
+.image-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.image-container img {
+    width: auto;  /* Adjust the width as needed */
+    height: auto;
+}
