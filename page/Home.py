@@ -14,4 +14,6 @@ def show_home():
     st.image("src/bird.png", caption="AI Image 1", width=650 )
     # content
     st.write("How to use this app")
+
+    st.write('Hello from Phat')
     
