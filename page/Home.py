@@ -17,5 +17,6 @@ def show_home():
 
     st.write('Hello from Phat')
 
+    st.write('Hello from Nana')
+
     st.write('Hello from Pleum')
-    
