@@ -4,11 +4,10 @@ def load_css():
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
 
-# Apply the CSS
-load_css()
 
 def show_visual():
     # Header AI image
+    load_css()
     st.markdown('<h1 class="center-header">AI Image Example</h1>', unsafe_allow_html=True)
      
     #  Create column

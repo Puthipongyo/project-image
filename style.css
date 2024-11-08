@@ -1,16 +1,22 @@
-/* style.css */
-
+/* Center the header text */
 .center-header {
     text-align: center;
 }
 
-.image-container {
+.circle-image {
+    width: 150px;           /* Adjust the diameter of the circle */
+    height: 150px;          /* Adjust the diameter of the circle */
+    border-radius: 50%;     /* Creates the circular shape */
+    overflow: hidden;       /* Ensures the image fits within the circle */
+    border: 2px solid #ddd; /* Optional: Add a border around the circle */
     display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
 }
 
-.image-container img {
-    width: auto;  /* Adjust the width as needed */
-    height: auto;
+.circle-image img {
+    width: 100%;            /* Ensures the image fills the circle container */
+    height: 100%;           /* Ensures the image fills the circle container */
+    object-fit: cover;      /* Ensures the image covers the circle without distortion */
 }
