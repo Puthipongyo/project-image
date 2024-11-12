@@ -2,8 +2,12 @@ import streamlit as st
 import tensorflow as tf
 import numpy as np
 import cv2 as cv
+import base64
+from tensorflow import keras
 from PIL import Image
 from io import BytesIO
+from tensorflow.keras.applications.resnet50 import preprocess_input
+
 
 def renoise(img):
     img_cv = np.array(img)
@@ -41,12 +45,60 @@ def convert_img_to_bytes(img_array):
     return img_bytes
 
 @st.cache_resource
-def load_model():
-    model = tf.keras.models.load_model("my_model.h5")  # Assuming the model is saved in 'SavedModel' format
+def load_model(option_model):
+    model = None
+    if option_model == 'Model 1':
+        model = tf.keras.models.load_model("modelnew.h5")  # Assuming the model is saved in 'SavedModel' format
+    elif option_model == 'Model 2':
+        model = tf.keras.models.load_model("modelhighaccuracy.h5")
     return model
 
+def predict(image_file, model):
+    if image_file is not None:
+        if model is None:
+            st.error("No model selected or model loading failed.")
+            return
+        # Open the uploaded image and ensure it is in RGB format
+        image = Image.open(image_file).convert("RGB")
+        
+        # Convert image to base64
+        buffered = BytesIO()
+        image.save(buffered, format="JPEG")
+        img_str = base64.b64encode(buffered.getvalue()).decode()
+        
+        # Embed the base64 image in the HTML
+        st.markdown(
+            f"""
+            <div class="visual-image">
+                <img src="data:image/jpeg;base64,{img_str}" alt="Uploaded Image" style="width:100%;">
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+        
+        # Display using Streamlit's st.image for fallback
+        #st.image(image, caption="Uploaded Image", use_container_width=True)
+
+        # Preprocess the image
+        img_array = np.array(image.resize((224, 224))) 
+        img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
+        img_array = preprocess_input(img_array)
+        
+        # Make prediction
+        prediction = model.predict(img_array)
+        predicted_class = np.argmax(prediction, axis=-1)
+        if predicted_class[0] == 0:
+            st.write("This picture is FAKE")
+        else:
+            st.write("This picture is REAL")
+        
+        # Display the result
+        st.write("Fake Probility : ",np.round(prediction[0][0] * 100, 2),'%')
+        st.write("Real Probility : ",np.round(prediction[0][1] * 100, 2),'%')
+        
 def show_upload():
-    load_css
+    load_css()
+    
     st.header('Detail of Model')
     st.markdown("""
     - Model 1: Explain Model 1 here
@@ -86,24 +138,16 @@ def show_upload():
         else: st.write("No transformation was applied.")
     
 
+    option_model = st.selectbox(
+    "How would you like to use model?",
+    ("Model 1", "Model 2"),
+    index=None,
+    placeholder="Select contact method...",
+    )
+    st.write("You selected:", option_model)
     
-    model = load_model()
+    model = load_model(option_model)
     st.markdown('<div><h2>Select Model to predict image</h2></div>', unsafe_allow_html=True)
     uploaded_file_model = st.file_uploader("Choose an image file to predict image", type=["png", "jpg", "jpeg"], key="uploadermodel")
-
-    if uploaded_file_model is not None:
-        # Open the uploaded image and ensure it is in RGB format
-        image = Image.open(uploaded_file_model).convert("RGB")
-        st.image(image, caption="Uploaded Image", use_container_width=True)
-
-        # Preprocess the image
-        img_array = np.array(image.resize((224, 224))) 
-        img_array = img_array / 255.0  # Normalize the image data
-        img_array = np.expand_dims(img_array, axis=0)  # Add batch dimension
-
-        # Make prediction
-        prediction = model.predict(img_array)
-        
-        # Display the result
-        st.write("Prediction:", prediction)
+    predict(uploaded_file_model,model)
 

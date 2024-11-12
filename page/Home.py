@@ -10,7 +10,7 @@ def show_home():
     load_css()
     st.markdown('<h1 class="center-header">AI-Generated vs. Real Image Classification</h1>', unsafe_allow_html=True)
 
-    st.image("src/bird.png", caption="AI Image 1", width=650)
+    st.image("src/IMG_3575.jpeg", caption="AI Image 1", width=650)
     # content
     st.write("How to use this app")
 

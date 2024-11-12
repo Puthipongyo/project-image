@@ -20,3 +20,14 @@
     height: 100%;           /* Ensures the image fills the circle container */
     object-fit: cover;      /* Ensures the image covers the circle without distortion */
 }
+
+.visual-image {
+    width: 150px;           /* Adjust the diameter of the circle */
+    height: 150px; 
+}
+
+.visual-image img {
+    width: 100%;            /* Ensures the image fills the circle container */
+    height: 100%;           /* Ensures the image fills the circle container */
+    object-fit: cover;      /* Ensures the image covers the circle without distortion */
+}
