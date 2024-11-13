@@ -61,22 +61,6 @@ def predict(image_file, model):
         # Open the uploaded image and ensure it is in RGB format
         image = Image.open(image_file).convert("RGB")
         
-        # Convert image to base64
-        buffered = BytesIO()
-        image.save(buffered, format="JPEG")
-        img_str = base64.b64encode(buffered.getvalue()).decode()
-        
-        # Embed the base64 image in the HTML
-        st.markdown(
-            f"""
-            <div class="visual-image">
-                <img src="data:image/jpeg;base64,{img_str}" alt="Uploaded Image" style="width:100%;">
-            </div>
-            """,
-            unsafe_allow_html=True
-        )
-        
-        # Display using Streamlit's st.image for fallback
         #st.image(image, caption="Uploaded Image", use_container_width=True)
 
         # Preprocess the image
@@ -149,5 +133,24 @@ def show_upload():
     model = load_model(option_model)
     st.markdown('<div><h2>Select Model to predict image</h2></div>', unsafe_allow_html=True)
     uploaded_file_model = st.file_uploader("Choose an image file to predict image", type=["png", "jpg", "jpeg"], key="uploadermodel")
-    predict(uploaded_file_model,model)
+
+    if uploaded_file_model is not None:
+        buffered = BytesIO()
+        image = Image.open(uploaded_file_model).convert("RGB")
+        image.save(buffered, format="JPEG")
+        img_str = base64.b64encode(buffered.getvalue()).decode()
+
+    # Embed the base64 image in the HTML
+        st.markdown(
+            f"""
+            <div class="upload-image">
+                <img src="data:image/jpeg;base64,{img_str}" alt="Uploaded Image" style="width:100%;">
+            </div>
+            """,unsafe_allow_html=True
+        )
+    
+    # Run prediction if the model is loaded
+        predict(uploaded_file_model, model)
+    else:
+        st.write("Please upload an image file.")
 
