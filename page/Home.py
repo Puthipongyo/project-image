@@ -7,14 +7,11 @@ def load_css():
 
 def show_home():
     load_css()
-    st.markdown('<h1 class="center-header">AI-Generated vs. Real Image Classification</h1>', unsafe_allow_html=True)
+    st.markdown('<h1 class="center-header"> RE-AL or FA-KE  </h1>', unsafe_allow_html=True)
+    st.markdown('<h3 class="center-header"> Image Classification</h3>', unsafe_allow_html=True)
 
-    st.image("src/IMG_3575.jpeg", caption="AI Image 1", width=650)
+    st.image("src/Home.jpeg", width=650)
 
-    st.write("How to use this app")
-
-    st.write('Hello from Phat')
-
-    st.write('Hello from Nana')
-
-    st.write('Hello from Pleum')
+    st.write("")
+    st.write("These days, artificial intelligence (AI) is becoming more and more integrated into our daily lives, offering enormous advantages in many different domains. It does, however, have certain disadvantages. This is especially noticeable in the art industry, where problems with copyright infringement and ownership have surfaced. This project has been developed to address this issue by utilising machine learning and image processing techniques to differentiate between AI-generated graphics and artwork created by humans. Training dataset is from Kaggle.")
+    

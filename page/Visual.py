@@ -92,3 +92,4 @@ def show_visual():
 
 
     st.write('Graph to compare each model (bar chart)')
+    st.write("sad")
