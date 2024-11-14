@@ -2,6 +2,7 @@ import os
 import random
 import streamlit as st
 import base64
+import matplotlib.pyplot as plt
 from page.Upload import predict
 from page.Upload import load_model
 from PIL import Image
@@ -38,6 +39,27 @@ def get_random_image(image_folder):
     image_files = [f for f in all_images if f.endswith(('.png', '.jpg', '.jpeg', '.bmp', '.gif'))]
 
     return os.path.join(image_folder, random.choice(image_files)) if image_files else None
+
+def visualize_graph():
+    labels = ['AI painting pictures', 'REAL painting pictures']
+    sizes = [10330, 8288]
+    colors = ['#ff9999','#66b3ff']  # Custom colors for each slice
+
+    # Create a pie chart
+    fig, ax = plt.subplots()
+    ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90, wedgeprops={'edgecolor': 'black'})
+
+    # Equal aspect ratio ensures that pie chart is drawn as a circle.
+    ax.axis('equal')
+
+    # Add a title
+    ax.set_title('Painting Pictures Distribution')
+
+    # Use Streamlit to display the plot
+    st.pyplot(fig)
+
+    # Optionally, add a text description or any other Streamlit elements
+    st.write("This pie chart shows the distribution of AI and REAL painting pictures.")
 
 def show_visual():
 
@@ -91,5 +113,4 @@ def show_visual():
             predict_visual(image_path)
 
 
-    st.write('Graph to compare each model (bar chart)')
-    st.write("sad")
+    visualize_graph()
