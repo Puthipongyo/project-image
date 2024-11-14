@@ -1,4 +1,4 @@
-/* Center the header text */
+
 .center-header {
     text-align: center;
 }
@@ -7,7 +7,7 @@
     display: flex;
     justify-content: flex-start;
     gap: 20px;
-    margin-left: -40px; /* Adjust this value to move the entire row left */
+    margin-left: -40px; 
 }
 .circle-image {
     width: 200px;
@@ -29,22 +29,22 @@
 }
 
 .visual-image {
-    width: 150px;           /* Adjust the diameter of the circle */
+    width: 150px;          
     height: 150px; 
 }
 
 .visual-image img {
-    width: 100%;            /* Ensures the image fills the circle container */
-    height: 100%;           /* Ensures the image fills the circle container */
-    object-fit: cover;      /* Ensures the image covers the circle without distortion */
+    width: 100%;        
+    height: 100%;          
+    object-fit: cover;    
 }
 
 .upload-image {
-    width: 500px;           /* Adjust the diameter of the circle */
+    width: 500px;       
 }
 
 .upload-image img {
-    width: 100%;            /* Ensures the image fills the circle container */
-    height: 100%;           /* Ensures the image fills the circle container */
-    object-fit: cover;      /* Ensures the image covers the circle without distortion */
+    width: 100%;         
+    height: 100%;         
+    object-fit: cover;     
 }

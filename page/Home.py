@@ -6,12 +6,11 @@ def load_css():
 
 
 def show_home():
-    # Header of home page
     load_css()
     st.markdown('<h1 class="center-header">AI-Generated vs. Real Image Classification</h1>', unsafe_allow_html=True)
 
     st.image("src/IMG_3575.jpeg", caption="AI Image 1", width=650)
-    # content
+
     st.write("How to use this app")
 
     st.write('Hello from Phat')
