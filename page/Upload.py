@@ -30,6 +30,7 @@ def increaselight(img):
 def load_css():
     with open('style.css') as f:
         st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+
 def convert_img_to_bytes(img_array):
     img_pil = Image.fromarray(img_array)
     img_bytes = BytesIO()
@@ -45,8 +46,9 @@ def load_model(option_model):
         model = tf.keras.models.load_model("modelresnet.h5")
     elif option_model == 'Model 2':
         #model = tf.keras.models.load_model("modelresnet.h5")
-        model = tf.keras.models.load_model("modelhighaccuracy.h5")
-        #model = tf.keras.models.load_model("modelmobilenetnoaug.h5")
+        #model = tf.keras.models.load_model("modelhighaccuracy.h5")
+        model = tf.keras.models.load_model("modelmobilenetnoaug.h5")
+        #model = tf.keras.models.load_model("modelmobilenetv2.h5")
     return model
 
 def predict(image_file, model):

@@ -67,15 +67,15 @@ def visualize_graph():
     st.plotly_chart(fig)
 
     nations = ["Training", "Testing", "Validation"]
-    gold = [39, 38, 37]
-    silver = [41, 32, 28]
+    real = [39, 38, 37]
+    AI = [41, 32, 28]
 
     # Create a bar chart using Plotly
     fig = go.Figure()
 
     # Add bars for each medal type
-    fig.add_trace(go.Bar(x=nations, y=gold, name="Gold", text=gold, textposition='outside'))
-    fig.add_trace(go.Bar(x=nations, y=silver, name="Silver", text=silver, textposition='outside'))
+    fig.add_trace(go.Bar(x=nations, y=real, name="Real", text=real, textposition='outside'))
+    fig.add_trace(go.Bar(x=nations, y=AI, name="AI", text=AI, textposition='outside'))
 
     # Customize the layout
     fig.update_layout(
