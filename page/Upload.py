@@ -46,9 +46,10 @@ def load_model(option_model):
         model = tf.keras.models.load_model("modelresnet.h5")
     elif option_model == 'Model 2':
         #model = tf.keras.models.load_model("modelresnet.h5")
-        #model = tf.keras.models.load_model("modelhighaccuracy.h5")
-        model = tf.keras.models.load_model("modelmobilenetnoaug.h5")
+        model = tf.keras.models.load_model("modelhighaccuracy.h5")
+        #model = tf.keras.models.load_model("modelmobilenetnoaug.h5")
         #model = tf.keras.models.load_model("modelmobilenetv2.h5")
+        #model = tf.keras.models.load_model("modelmobilenet.h5")
     return model
 
 def predict(image_file, model):
