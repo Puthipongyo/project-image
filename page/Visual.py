@@ -104,8 +104,8 @@ def visualize_graph():
             'font': {'size': 24}
         },
         barmode='stack',  # Stacked bars
-        xaxis={'title': {'text': "Picture"}},
-        yaxis={'title': {'text': "Category"}}
+        yaxis={'title': {'text': "Picture"}},
+        xaxis={'title': {'text': "Category"}}
     )
     # Show the figure in Streamlit
     st.plotly_chart(fig)
