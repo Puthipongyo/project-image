@@ -43,13 +43,17 @@ def load_model(option_model):
     model = None
     if option_model == 'Model 1':
         #model = tf.keras.models.load_model("modelnew.h5")
-        model = tf.keras.models.load_model("modelresnet.h5")
+        #model = tf.keras.models.load_model("modelresnet.h5")
+        model = tf.keras.models.load_model("resnet_5epoch.h5")
     elif option_model == 'Model 2':
         #model = tf.keras.models.load_model("modelresnet.h5")
         model = tf.keras.models.load_model("modelhighaccuracy.h5")
         #model = tf.keras.models.load_model("modelmobilenetnoaug.h5")
         #model = tf.keras.models.load_model("modelmobilenetv2.h5")
         #model = tf.keras.models.load_model("modelmobilenet.h5")
+        
+    elif option_model == 'Model 3':
+        model = tf.keras.models.load_model("modelresnet.h5")
     return model
 
 def predict(image_file, model):
@@ -120,7 +124,7 @@ def show_upload():
         # Make sure we load the model only after the image is uploaded
         option_model = st.selectbox(
             "How would you like to use model?",
-            ("Model 1", "Model 2"),
+            ("Model 1", "Model 2","Model 3"),
             index=None,
             placeholder="Select contact method..."
         )

@@ -9,6 +9,11 @@
     gap: 20px;
     margin-left: -40px; 
 }
+.about-container-home{
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+}
 .circle-image {
     width: 200px;
     height: 200px;

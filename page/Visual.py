@@ -82,7 +82,7 @@ def show_visual():
         st.markdown('<h4>Model 2</h4>', unsafe_allow_html=True)
         predict(image_path, load_model('Model 2'))
         st.markdown('<h4>Model 3</h4>', unsafe_allow_html=True)
-        predict(image_path, load_model('Model 2'))
+        predict(image_path, load_model('Model 3'))
         
     st.markdown('<h1 class="center-header">Real Image Example</h1>', unsafe_allow_html=True)
 
@@ -99,7 +99,7 @@ def show_visual():
         st.markdown('<h4>Model 2</h4>', unsafe_allow_html=True)
         predict(image_path, load_model('Model 2'))
         st.markdown('<h4>Model 3</h4>', unsafe_allow_html=True)
-        predict(image_path, load_model('Model 2'))
+        predict(image_path, load_model('Model 3'))
         
     visualize_graph()
 
