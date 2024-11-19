@@ -7,11 +7,12 @@ from page.Home import show_home
 from page.About import show_about
 from page.Upload import show_upload
 from page.Visual import show_visual
+from page.Test import show_test
 
 with st.sidebar:
     selected = option_menu(
         menu_title = 'Main Menu',
-        options = ['Home', 'Visual', 'Upload', 'about us'],
+        options = ['Home', 'Visual', 'Upload', 'About us', 'Test'],
         icons = ['house', 'eye', 'upload', 'info-circle'],
         menu_icon = 'cast',
         default_index = 0
@@ -24,6 +25,8 @@ def switch_case(option):
         return show_visual()
     elif option == 'Upload':
         return show_upload()
+    elif option == 'Test':
+        return show_test()
     else : return show_about()
 
 def main():

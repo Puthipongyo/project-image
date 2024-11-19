@@ -29,8 +29,9 @@
 }
 
 .visual-image {
-    width: 150px;          
-    height: 150px; 
+    width: 500px;          
+    height: 500px;
+    margin-left: -40px;  
 }
 
 .visual-image img {
