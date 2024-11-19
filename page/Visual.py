@@ -68,38 +68,42 @@ def show_visual():
 
     st.markdown('<h1 class="center-header">AI Image Example</h1>', unsafe_allow_html=True)
 
+    image_path = get_random_image(fake_folder)
+    print_image_visual(image_path)
+    st.write("")
     col1, col2, col3 = st.columns(3)
-
-    with col1:
-        image_path = get_random_image(fake_folder)
-        if image_path:
-            print_image_visual(image_path)
-        else:
-            st.write("No images found in fake folder.")
-    with col3:
-        st.markdown('<h4>Model 1</h4>', unsafe_allow_html=True)
-        predict(image_path, load_model('Model 1'))
-        st.markdown('<h4>Model 2</h4>', unsafe_allow_html=True)
-        predict(image_path, load_model('Model 2'))
-        st.markdown('<h4>Model 3</h4>', unsafe_allow_html=True)
-        predict(image_path, load_model('Model 3'))
+    if image_path:
+        with col1:    
+            st.markdown('<h4>Model 1</h4>', unsafe_allow_html=True)
+            predict(image_path, load_model('Model 1'))
+        with col2:
+            st.markdown('<h4>Model 2</h4>', unsafe_allow_html=True)
+            predict(image_path, load_model('Model 2'))
+        with col3:
+            st.markdown('<h4>Model 3</h4>', unsafe_allow_html=True)
+            predict(image_path, load_model('Model 3'))
+    else:
+        st.write("No images found in fake folder.")
         
     st.markdown('<h1 class="center-header">Real Image Example</h1>', unsafe_allow_html=True)
 
+    image_path = get_random_image(real_folder)
+    print_image_visual(image_path)
+    st.write("")
     col4, col5, col6 = st.columns(3)
-    with col4:
-        image_path = get_random_image(real_folder)
-        if image_path:
-            print_image_visual(image_path)
-        else:
-            st.write("No images found in fake folder.")
-    with col6:
-        st.markdown('<h4>Model 1</h4>', unsafe_allow_html=True)
-        predict(image_path, load_model('Model 1'))
-        st.markdown('<h4>Model 2</h4>', unsafe_allow_html=True)
-        predict(image_path, load_model('Model 2'))
-        st.markdown('<h4>Model 3</h4>', unsafe_allow_html=True)
-        predict(image_path, load_model('Model 3'))
+    if image_path:
+        with col4:    
+            st.markdown('<h4>Model 1</h4>', unsafe_allow_html=True)
+            predict(image_path, load_model('Model 1'))
+        with col5:
+            st.markdown('<h4>Model 2</h4>', unsafe_allow_html=True)
+            predict(image_path, load_model('Model 2'))
+        with col6:
+            st.markdown('<h4>Model 3</h4>', unsafe_allow_html=True)
+            predict(image_path, load_model('Model 3'))
+    else:
+        st.write("No images found in fake folder.")
+    
         
     visualize_graph()
 
