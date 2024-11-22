@@ -113,16 +113,16 @@ def visualize_graph():
     sizes = [10330, 8288]
     colors = ['#E44C51', '#4C7AE4']  
 
-    # Create a pie chart with custom colors and add a centered title
+    
     fig = go.Figure(data=[go.Pie(
         labels=labels,
         values=sizes,
         textinfo='label+percent',
         insidetextorientation='radial',
-        marker=dict(colors=colors),  # Set the custom colors
+        marker=dict(colors=colors), 
     )])
 
-    # Add a centered title to the figure layout
+    
     fig.update_layout(
         title={
             'text': "Segment of AI and Real Image",
@@ -139,12 +139,11 @@ def visualize_graph():
     options = ["Training", "Testing", "Validation"]
     AI = [18292, 4160, 4153]
     real = [7847, 1783, 1781]
-    colors_AI = '#E44C51'  # สีแดงสำหรับ AI
-    colors_real = '#4C7AE4'  # สีน้ำเงินสำหรับ Real
+    colors_AI = '#E44C51' 
+    colors_real = '#4C7AE4' 
 
     fig = go.Figure()
 
-    ## bar chart
     fig.add_trace(go.Bar(
         x=options, 
         y=real, 
@@ -163,7 +162,6 @@ def visualize_graph():
         marker=dict(color=colors_AI)  
     ))
 
-    # Customize the layout
     fig.update_layout(
         title={
             'text': "Painting Pictures Count",
@@ -173,21 +171,21 @@ def visualize_graph():
             'yanchor': 'top',
             'font': {'size': 24}
         },
-        barmode='stack',  # Stacked bars
+        barmode='stack',  
         yaxis={'title': {'text': "Picture"}},
         xaxis={'title': {'text': "Category"}}
     )
-    # Show the figure in Streamlit
+
     st.plotly_chart(fig)
 
-    # ResNet model data
+
     epoch = [1, 2, 3, 4, 5, 6]
     loss = [0.3031206727, 0.2488057315, 0.239877671, 0.2289397269, 0.2233790457, 0.2149953097]
     val_loss = [0.249250859, 0.233581394, 0.222523436, 0.2166575938, 0.2160844207, 0.2322244644]
     accuracy = [0.8784957528, 0.9012586474, 0.9060790539, 0.910420596, 0.9115115404, 0.915566802]
     val_accuracy = [0.8985360861, 0.9099781513, 0.9153625965, 0.9123338461, 0.9109877348, 0.9050984383]
 
-    # Create Accuracy figure
+
     accuracy_fig = go.Figure()
     accuracy_fig.add_trace(go.Scatter(x=epoch, y=accuracy, name='Training Accuracy',
                                     line=dict(color='#4CE4B1', width=4, dash='dash')))
@@ -199,7 +197,7 @@ def visualize_graph():
         yaxis=dict(title=dict(text='Accuracy')),
     )
 
-    # Create Loss figure
+
     loss_fig = go.Figure()
     loss_fig.add_trace(go.Scatter(x=epoch, y=loss, name='Training Loss',
                                 line=dict(color='firebrick', width=4, dash='dash')))
@@ -213,7 +211,7 @@ def visualize_graph():
 
     col1, col2 = st.columns(2)
 
-    # Display plots in respective columns
+
     with col1:
         st.plotly_chart(accuracy_fig, use_container_width=True)
 
@@ -221,7 +219,6 @@ def visualize_graph():
         st.plotly_chart(loss_fig, use_container_width=True)
 
 
-    # mobilenet model
     epoch = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     loss = [0.3252242804, 0.2867548168, 0.2747557163, 0.2661762238, 0.2616060078, 0.2545778751, 
             0.2479001731, 0.2477663159, 0.2445758879]
@@ -232,7 +229,7 @@ def visualize_graph():
     val_accuracy = [0.8855796456, 0.8827191591, 0.8961803913, 0.8923102617, 0.89483428, 0.8971899748,
                     0.8956755996, 0.8938246965, 0.8960121274]
 
-    # Create Accuracy figure
+
     accuracy_fig = go.Figure()
     accuracy_fig.add_trace(go.Scatter(x=epoch, y=accuracy, name='Training Accuracy',
                                     line=dict(color='#E49D4C', width=4, dash='dash')))
@@ -244,7 +241,7 @@ def visualize_graph():
         yaxis=dict(title=dict(text='Accuracy')),
     )
 
-    # Create Loss figure
+
     loss_fig = go.Figure()
     loss_fig.add_trace(go.Scatter(x=epoch, y=loss, name='Training Loss',
                                 line=dict(color='firebrick', width=4, dash='dash')))
@@ -258,7 +255,7 @@ def visualize_graph():
 
     col1, col2 = st.columns(2)
 
-    # Display plots in respective columns
+
     with col1:
         st.plotly_chart(accuracy_fig, use_container_width=True)
 
@@ -266,7 +263,7 @@ def visualize_graph():
         st.plotly_chart(loss_fig, use_container_width=True)
 
 
-     # last model
+
     epoch = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     loss = [0.3252242804, 0.2867548168, 0.2747557163, 0.2661762238, 0.2616060078, 0.2545778751, 
             0.2479001731, 0.2477663159, 0.2445758879]
@@ -277,7 +274,7 @@ def visualize_graph():
     val_accuracy = [0.8855796456, 0.8827191591, 0.8961803913, 0.8923102617, 0.89483428, 0.8971899748,
                     0.8956755996, 0.8938246965, 0.8960121274]
 
-    # Create Accuracy figure
+
     accuracy_fig = go.Figure()
     accuracy_fig.add_trace(go.Scatter(x=epoch, y=accuracy, name='Training Accuracy',
                                     line=dict(color='pink', width=4, dash='dash')))
@@ -289,7 +286,7 @@ def visualize_graph():
         yaxis=dict(title=dict(text='Accuracy')),
     )
 
-    # Create Loss figure
+
     loss_fig = go.Figure()
     loss_fig.add_trace(go.Scatter(x=epoch, y=loss, name='Training Loss',
                                 line=dict(color='firebrick', width=4, dash='dash')))
@@ -303,7 +300,7 @@ def visualize_graph():
 
     col1, col2 = st.columns(2)
 
-    # Display plots in respective columns
+
     with col1:
         st.plotly_chart(accuracy_fig, use_container_width=True)
 

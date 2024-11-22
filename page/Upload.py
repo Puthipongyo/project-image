@@ -43,17 +43,20 @@ def load_model(option_model):
     if option_model == 'Model 1':
         #model = tf.keras.models.load_model("modelnew.h5")
         #model = tf.keras.models.load_model("modelresnet.h5")
-        model = tf.keras.models.load_model("resnet_5epoch.h5")
+        #model = tf.keras.models.load_model("resnet_5epoch.h5")
+        model = tf.keras.models.load_model("resnetbalance.h5")
     elif option_model == 'Model 2':
         #model = tf.keras.models.load_model("modelresnet.h5")'
         #model = tf.keras.models.load_model("resnet10epoch.h5")
-        model = tf.keras.models.load_model("modelhighaccuracy.h5")
+        #model = tf.keras.models.load_model("modelhighaccuracy.h5")
         #model = tf.keras.models.load_model("modelmobilenetnoaug.h5")
         #model = tf.keras.models.load_model("modelmobilenetv2.h5")
         #model = tf.keras.models.load_model("modelmobilenet.h5")
+        model = tf.keras.models.load_model("resnetbalance10epoch.h5")
         
     elif option_model == 'Model 3':
-        model = tf.keras.models.load_model("modelresnet.h5")
+        #model = tf.keras.models.load_model("modelresnet.h5")
+        model = tf.keras.models.load_model("resnetfinetunefreeze(best).h5")
     return model
 
 def predict(image_file, model):
@@ -121,7 +124,7 @@ def show_upload():
 
         st.markdown('<div><h2>Choose Model</h2></div>', unsafe_allow_html=True)
         
-        # Make sure we load the model only after the image is uploaded
+        
         option_model = st.selectbox(
             "How would you like to use model?",
             ("Model 1", "Model 2","Model 3"),
@@ -132,7 +135,6 @@ def show_upload():
         
         model = load_model(option_model)
 
-        # Only proceed with prediction if the model is loaded and image is available
         if model and uploaded_file is not None:
             #st.image(img_con, caption="Processed Image", use_container_width=True)
             image_model = convert_img_to_bytes(img_con)
