@@ -40,6 +40,9 @@ def convert_img_to_bytes(img_array):
 
 @st.cache_resource
 def load_model(option_model):
+    if option_model is None:
+            st.error("Please Select Model.")
+            return
     if option_model == 'Model 1':
         #model = tf.keras.models.load_model("modelnew.h5")
         #model = tf.keras.models.load_model("modelresnet.h5")
