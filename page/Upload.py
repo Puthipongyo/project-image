@@ -77,9 +77,9 @@ def show_upload():
     
     st.header('Detail of Model')
     st.markdown(""" 
-    - Model 1: Explain Model 1 here
-    - Model 2: Explain Model 2 here
-    - Model 3: Explain Model 3 here
+    - Model 1 (Basic CNN Model) : Can classify images within the dataset but poor results when use with images outside the dataset.
+    - Model 2 (ResNet50) : Can classify both images within the dataset and those outside the dataset.
+    - Model 3 (ResNet50) with Fine-Tuning : Can classify both images within the dataset and those outside the dataset and usually better result that Model 2
     """)
     st.markdown('<div><h2>Convert image</h2></div>', unsafe_allow_html=True)
     st.markdown('<div><h5>You can reduce noise ,blur and increase light here </h5></div>', unsafe_allow_html=True)

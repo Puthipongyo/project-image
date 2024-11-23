@@ -178,21 +178,21 @@ def visualize_graph():
 
     st.plotly_chart(fig)
 
-
-    epoch = [1, 2, 3, 4, 5, 6]
-    loss = [0.3031206727, 0.2488057315, 0.239877671, 0.2289397269, 0.2233790457, 0.2149953097]
-    val_loss = [0.249250859, 0.233581394, 0.222523436, 0.2166575938, 0.2160844207, 0.2322244644]
-    accuracy = [0.8784957528, 0.9012586474, 0.9060790539, 0.910420596, 0.9115115404, 0.915566802]
-    val_accuracy = [0.8985360861, 0.9099781513, 0.9153625965, 0.9123338461, 0.9109877348, 0.9050984383]
+    # CNN 
+    epoch = [1, 2, 3, 4, 5]
+    loss = [0.694229, 0.592310, 0.515308, 0.490537, 0.473285]
+    accuracy = [0.552852, 0.703279, 0.776656, 0.794369, 0.802441]
+    val_loss = [0.656276, 0.530266, 0.488951, 0.542080, 0.502169]
+    val_accuracy = [0.644960, 0.789164, 0.794548, 0.745920, 0.782938]
 
 
     accuracy_fig = go.Figure()
     accuracy_fig.add_trace(go.Scatter(x=epoch, y=accuracy, name='Training Accuracy',
-                                    line=dict(color='#4CE4B1', width=4, dash='dash')))
+                                    line=dict(color='#4CE4B1', width=3, dash='dash')))
     accuracy_fig.add_trace(go.Scatter(x=epoch, y=val_accuracy, name='Validation Accuracy',
-                                    line=dict(color='#4CE4B1', width=4)))
+                                    line=dict(color='#4CE4B1', width=3)))
     accuracy_fig.update_layout(
-        title=dict(text='Accuracy of ResNet Model'),
+        title=dict(text='Accuracy of Simple CNN Model'),
         xaxis=dict(title=dict(text='Epoch')),
         yaxis=dict(title=dict(text='Accuracy')),
     )
@@ -200,11 +200,53 @@ def visualize_graph():
 
     loss_fig = go.Figure()
     loss_fig.add_trace(go.Scatter(x=epoch, y=loss, name='Training Loss',
-                                line=dict(color='firebrick', width=4, dash='dash')))
+                                line=dict(color='firebrick', width=3, dash='dash')))
     loss_fig.add_trace(go.Scatter(x=epoch, y=val_loss, name='Validation Loss',
-                                line=dict(color='firebrick', width=4)))
+                                line=dict(color='firebrick', width=3)))
     loss_fig.update_layout(
-        title=dict(text='Loss of ResNet Model'),
+        title=dict(text='Loss of Simple CNN Model'),
+        xaxis=dict(title=dict(text='Epoch')),
+        yaxis=dict(title=dict(text='Loss')),
+    )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.plotly_chart(accuracy_fig, use_container_width=True)
+
+    with col2:
+        st.plotly_chart(loss_fig, use_container_width=True)
+
+
+
+    ## Resnet
+    epoch = [1, 2, 3, 4, 5]
+    loss = [0.3782561421, 0.3311806023, 0.3202846348, 0.3099855781, 0.3165609241]
+    accuracy = [0.8469719291, 0.8708825707, 0.8750143647, 0.8810971975, 0.8795669079]
+    val_loss = [0.4360812604, 0.3923163712, 0.3274979591, 0.4336121678, 0.2789599895]
+    val_accuracy = [0.8189466596, 0.833754003, 0.8623591065, 0.8244994283, 0.8921419978]
+
+
+
+    accuracy_fig = go.Figure()
+    accuracy_fig.add_trace(go.Scatter(x=epoch, y=accuracy, name='Training Accuracy',
+                                    line=dict(color='#E49D4C', width=3, dash='dash')))
+    accuracy_fig.add_trace(go.Scatter(x=epoch, y=val_accuracy, name='Validation Accuracy',
+                                    line=dict(color='#E49D4C', width=3)))
+    accuracy_fig.update_layout(
+        title=dict(text='Accuracy of Resnet Model'),
+        xaxis=dict(title=dict(text='Epoch')),
+        yaxis=dict(title=dict(text='Accuracy')),
+    )
+
+
+    loss_fig = go.Figure()
+    loss_fig.add_trace(go.Scatter(x=epoch, y=loss, name='Training Loss',
+                                line=dict(color='firebrick', width=3, dash='dash')))
+    loss_fig.add_trace(go.Scatter(x=epoch, y=val_loss, name='Validation Loss',
+                                line=dict(color='firebrick', width=3)))
+    loss_fig.update_layout(
+        title=dict(text='Loss of Resnet Model'),
         xaxis=dict(title=dict(text='Epoch')),
         yaxis=dict(title=dict(text='Loss')),
     )
@@ -219,24 +261,21 @@ def visualize_graph():
         st.plotly_chart(loss_fig, use_container_width=True)
 
 
-    epoch = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    loss = [0.3252242804, 0.2867548168, 0.2747557163, 0.2661762238, 0.2616060078, 0.2545778751, 
-            0.2479001731, 0.2477663159, 0.2445758879]
-    val_loss = [0.2964640856, 0.2790726721, 0.2592705786, 0.2726657987, 0.2556690276, 0.2529106438,
-                0.261025108, 0.2563704848, 0.2529461086]
-    accuracy = [0.86793679, 0.8863766789, 0.8914266229, 0.8937602639, 0.8967443109, 0.8996136189,
-                0.901090533, 0.9027889371, 0.901056423]
-    val_accuracy = [0.8855796456, 0.8827191591, 0.8961803913, 0.8923102617, 0.89483428, 0.8971899748,
-                    0.8956755996, 0.8938246965, 0.8960121274]
+    # Resnet fine tune
+    epoch = [1, 2, 3, 4, 5]
+    loss = [0.366931170225143, 0.30858364701271, 0.287208646535873, 0.281542807817459, 0.271793335676193]
+    val_loss = [0.321894079446792, 0.274576783180236, 0.274013966321945, 0.229892373085021, 0.246545508503913]
+    accuracy = [0.852251410484314, 0.878572225570678, 0.890240609645843, 0.89307165145874, 0.89376026391983]
+    val_accuracy = [0.872959792613983, 0.89702171087265, 0.896348655223846, 0.910146415233612, 0.90526670217514]
 
 
     accuracy_fig = go.Figure()
     accuracy_fig.add_trace(go.Scatter(x=epoch, y=accuracy, name='Training Accuracy',
-                                    line=dict(color='#E49D4C', width=4, dash='dash')))
+                                    line=dict(color='#d950ff', width=3, dash='dash')))
     accuracy_fig.add_trace(go.Scatter(x=epoch, y=val_accuracy, name='Validation Accuracy',
-                                    line=dict(color='#E49D4C', width=4)))
+                                    line=dict(color='#d950ff', width=3)))
     accuracy_fig.update_layout(
-        title=dict(text='Accuracy of Mobilenet Model'),
+        title=dict(text='Accuracy of Resnet fine tune Model'),
         xaxis=dict(title=dict(text='Epoch')),
         yaxis=dict(title=dict(text='Accuracy')),
     )
@@ -244,62 +283,16 @@ def visualize_graph():
 
     loss_fig = go.Figure()
     loss_fig.add_trace(go.Scatter(x=epoch, y=loss, name='Training Loss',
-                                line=dict(color='firebrick', width=4, dash='dash')))
+                                line=dict(color='firebrick', width=3, dash='dash')))
     loss_fig.add_trace(go.Scatter(x=epoch, y=val_loss, name='Validation Loss',
-                                line=dict(color='firebrick', width=4)))
+                                line=dict(color='firebrick', width=3)))
     loss_fig.update_layout(
-        title=dict(text='Loss of Mobilenet Model'),
+        title=dict(text='Loss of Resnet fine tune Model'),
         xaxis=dict(title=dict(text='Epoch')),
         yaxis=dict(title=dict(text='Loss')),
     )
 
     col1, col2 = st.columns(2)
-
-
-    with col1:
-        st.plotly_chart(accuracy_fig, use_container_width=True)
-
-    with col2:
-        st.plotly_chart(loss_fig, use_container_width=True)
-
-
-
-    epoch = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    loss = [0.3252242804, 0.2867548168, 0.2747557163, 0.2661762238, 0.2616060078, 0.2545778751, 
-            0.2479001731, 0.2477663159, 0.2445758879]
-    val_loss = [0.2964640856, 0.2790726721, 0.2592705786, 0.2726657987, 0.2556690276, 0.2529106438,
-                0.261025108, 0.2563704848, 0.2529461086]
-    accuracy = [0.86793679, 0.8863766789, 0.8914266229, 0.8937602639, 0.8967443109, 0.8996136189,
-                0.901090533, 0.9027889371, 0.901056423]
-    val_accuracy = [0.8855796456, 0.8827191591, 0.8961803913, 0.8923102617, 0.89483428, 0.8971899748,
-                    0.8956755996, 0.8938246965, 0.8960121274]
-
-
-    accuracy_fig = go.Figure()
-    accuracy_fig.add_trace(go.Scatter(x=epoch, y=accuracy, name='Training Accuracy',
-                                    line=dict(color='pink', width=4, dash='dash')))
-    accuracy_fig.add_trace(go.Scatter(x=epoch, y=val_accuracy, name='Validation Accuracy',
-                                    line=dict(color='pink', width=4)))
-    accuracy_fig.update_layout(
-        title=dict(text='Accuracy of Model'),
-        xaxis=dict(title=dict(text='Epoch')),
-        yaxis=dict(title=dict(text='Accuracy')),
-    )
-
-
-    loss_fig = go.Figure()
-    loss_fig.add_trace(go.Scatter(x=epoch, y=loss, name='Training Loss',
-                                line=dict(color='firebrick', width=4, dash='dash')))
-    loss_fig.add_trace(go.Scatter(x=epoch, y=val_loss, name='Validation Loss',
-                                line=dict(color='firebrick', width=4)))
-    loss_fig.update_layout(
-        title=dict(text='Loss of Model'),
-        xaxis=dict(title=dict(text='Epoch')),
-        yaxis=dict(title=dict(text='Loss')),
-    )
-
-    col1, col2 = st.columns(2)
-
 
     with col1:
         st.plotly_chart(accuracy_fig, use_container_width=True)
@@ -307,3 +300,4 @@ def visualize_graph():
     with col2:
         st.plotly_chart(loss_fig, use_container_width=True)
    
+
