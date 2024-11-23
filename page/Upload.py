@@ -44,22 +44,11 @@ def load_model(option_model):
             st.error("Please Select Model.")
             return
     if option_model == 'Model 1':
-        #model = tf.keras.models.load_model("modelnew.h5")
-        #model = tf.keras.models.load_model("modelresnet.h5")
-        #model = tf.keras.models.load_model("resnet_5epoch.h5")
-        model = tf.keras.models.load_model("resnetbalance.h5")
+        model = tf.keras.models.load_model("Model1.h5")
     elif option_model == 'Model 2':
-        #model = tf.keras.models.load_model("modelresnet.h5")'
-        #model = tf.keras.models.load_model("resnet10epoch.h5")
-        #model = tf.keras.models.load_model("modelhighaccuracy.h5")
-        #model = tf.keras.models.load_model("modelmobilenetnoaug.h5")
-        #model = tf.keras.models.load_model("modelmobilenetv2.h5")
-        #model = tf.keras.models.load_model("modelmobilenet.h5")
-        model = tf.keras.models.load_model("resnetbalance10epoch.h5")
-        
+        model = tf.keras.models.load_model("Model2.h5")
     elif option_model == 'Model 3':
-        #model = tf.keras.models.load_model("modelresnet.h5")
-        model = tf.keras.models.load_model("resnetfinetunefreeze(best).h5")
+        model = tf.keras.models.load_model("Model3.h5")
     return model
 
 def predict(image_file, model):
@@ -139,7 +128,6 @@ def show_upload():
         model = load_model(option_model)
 
         if model and uploaded_file is not None:
-            #st.image(img_con, caption="Processed Image", use_container_width=True)
             image_model = convert_img_to_bytes(img_con)
             predict(image_model, model)
 
