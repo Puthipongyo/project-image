@@ -1,6 +1,5 @@
 import streamlit as st
 import base64
-from pathlib import Path
 from PIL import Image
 from io import BytesIO
 def convert_image(img):

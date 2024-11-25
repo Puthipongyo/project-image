@@ -72,6 +72,7 @@ def predict(image_file, model):
         
         st.write("Fake Probility : ",np.round(prediction[0][0] * 100, 2),'%')
         st.write("Real Probility : ",np.round(prediction[0][1] * 100, 2),'%')  
+        
 def show_upload():
     load_css()
     

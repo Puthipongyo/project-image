@@ -15,4 +15,3 @@ def show_home():
     st.markdown('''<h6 class ="about-container-home"> <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;These days, artificial intelligence (AI) is becoming more and more integrated 
                 into our daily lives, offering enormous advantages in many different domains. It does, however, have certain disadvantages. This is especially noticeable in the art industry, where problems with copyright infringement and ownership have surfaced. This project has been developed to address this issue by utilising machine learning and image processing techniques to differentiate between AI-generated graphics and artwork created by humans. Training dataset is from Kaggle. </h6>'''
                 , unsafe_allow_html=True)
-    
