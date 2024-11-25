@@ -6,8 +6,10 @@ import base64
 import matplotlib.pyplot as plt
 import numpy as np
 from tensorflow.keras.applications.resnet50 import preprocess_input
-from page.Upload import predict
-from page.Upload import load_model
+# from page.Upload import predict
+# from page.Upload import load_model
+from Upload import predict
+from Upload import load_model
 from PIL import Image
 from io import BytesIO
 

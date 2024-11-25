@@ -1,12 +1,19 @@
+# from page import Home, About, Upload, Visual
 import streamlit as st
 import pandas as pd
 import numpy as np
 import streamlit_option_menu
 from streamlit_option_menu import option_menu
-from page.Home import show_home
-from page.About import show_about
-from page.Upload import show_upload
-from page.Visual import show_visual
+# from page.Home import show_home
+# from page.About import show_about
+# from page.Upload import show_upload
+# from page.Visual import show_visual
+from Home import show_home
+from About import show_about
+from Upload import show_upload
+from Visual import show_visual
+
+
 
 with st.sidebar:
     selected = option_menu(
